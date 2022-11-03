@@ -24,7 +24,7 @@ public class MemoryMemberRepository implements MemberRepository{
 
     //여기서 부터 코드 해석하기
     @Override
-    public Optional<Member> fidByName(String name) {
+    public Optional<Member> findByName(String name) {
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
@@ -33,5 +33,9 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
