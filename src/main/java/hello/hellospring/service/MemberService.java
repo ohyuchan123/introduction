@@ -1,20 +1,22 @@
-package service;
+package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
 
+    //서비스를 작성하려면, 리포지토리가 필요하므로 멤버 변수 선언
     private final MemberRepository memberRepository;
 
-    @Autowired
+    //add constructor
+    // 리포지토리를 직접 new로 생성하지 않고, 외부에서 넣어주도록 구현
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
