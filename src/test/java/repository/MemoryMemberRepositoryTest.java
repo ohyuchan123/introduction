@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class MemoryMemberRepositoryTest {
@@ -22,7 +23,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void save(){
+    public void save() throws SQLException {
         Member member = new Member();
         member.setName("spring");
 
@@ -37,7 +38,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void findByName(){
+    public void findByName() throws SQLException {
         //given
         Member member1 = new Member();
         member1.setName("spring1");
@@ -55,7 +56,7 @@ public class MemoryMemberRepositoryTest {
     }
 
     @Test
-    public void findAll(){
+    public void findAll() throws SQLException {
         Member member1 = new Member();
         member1.setName("spring1");
         repository.save(member1);

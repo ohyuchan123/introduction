@@ -2,9 +2,12 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 
+import javax.transaction.Transactional;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 
     //서비스를 작성하려면, 리포지토리가 필요하므로 멤버 변수 선언
@@ -19,7 +22,7 @@ public class MemberService {
     /**
      * 회원가입
      */
-    public Long join(Member member) {
+    public Long join(Member member) throws SQLException {
         validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getID();
